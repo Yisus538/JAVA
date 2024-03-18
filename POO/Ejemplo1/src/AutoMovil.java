@@ -8,12 +8,11 @@ public class AutoMovil {
 
     // Metodos
     public String detalle() {
-
-        String sb = "\nauto.fabricante = " + this.fabricante +
-                "\nauto.modelo = " + this.modelo +
-                "\nauto.color = " + this.color +
-                "\nauto.cilindrada = " + this.cilindrada;
-
-        return sb;
+        return "\nauto.fabricante = " + this.fabricante + "\nauto.modelo = " + this.modelo + "\nauto.color = " + this.color + "\nauto.cilindrada = " + this.cilindrada;
     }
+    public String acelerar(int rpm){
+        return "el auto " + this.fabricante + " acelerando a " + rpm + "rpm";
+    }
+    public String frenar(){return this.fabricante + " " + this.modelo + "frenando!";}
+
 }
