@@ -1,0 +1,13 @@
+package Seccion_5_FlujoDeControl;
+
+public class SentenciaForEach {
+    public static void main(String[] args) {
+
+        int[] numeros = {1,3,5,7,9,11,13,14};
+
+        for(int num : numeros){
+            System.out.println("num = " + num);
+        }
+
+    }
+}
