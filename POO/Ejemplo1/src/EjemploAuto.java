@@ -3,19 +3,18 @@ public class EjemploAuto {
 
         AutoMovil auto = new AutoMovil();
         AutoMovil mazda = new AutoMovil();
+        AutoMovil auto1 = new AutoMovil("Citroen","c4","verde",4.0,55);
 
-        auto.fabricante = "Subaru";
-        auto.modelo = "Impresa";
-        auto.cilindrada = 2.0;
-        auto.color = "Blanco";
-
-        mazda.fabricante = "Mazda";
-        mazda.modelo = "BT-50";
-        mazda.cilindrada = 3.0;
-        mazda.color = "Rojo";
+        System.out.println(auto.getFabricante());
 
         System.out.println(auto.detalle() + mazda.detalle());
 
-        System.out.println(auto.acelerar(10));
+        System.out.println(auto.acelerar(3000));
+        System.out.println(auto.frenar());
+        System.out.println(auto.acelerarFrenar(4000));
+
+        System.out.println("Kilometros por litro " + mazda.calcularConsumo(300,0.6f));
+        System.out.println("Kilometros por litro " + mazda.calcularConsumo(300,60));
+        System.out.println(auto1.detalle());
     }
 }
