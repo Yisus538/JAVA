@@ -1,6 +1,7 @@
 public class AutoMovil {
 
     // Atributos
+    private int id;
     private String fabricante;
     private String modelo;
     private String color;
@@ -9,12 +10,14 @@ public class AutoMovil {
 
    private static String colorPatente = "Naranja";
    private static int capacidadTanqueEstatico = 30;
+   private static int ultimoId;
 
     // Metodos
 
     // Sobrecarga de Constructores --------------------------------------------------------------------------
-    public AutoMovil(){} // Constructor por defecto
+    public AutoMovil(){this.id = ++AutoMovil.ultimoId;} // Constructor por defecto
     public AutoMovil(String fabricante, String modelo, String color, double cilindrada, int capacidadTanque) {
+        this();
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.color = color;
@@ -36,7 +39,8 @@ public class AutoMovil {
 
     //-------------------------------------------------------------------------------------------------------
     public String detalle() {
-        return "\nauto.fabricante = " + this.fabricante +
+        return "\nauto.id = " + this.id +
+                "\nauto.fabricante = " + this.fabricante +
                 "\nauto.modelo = " + this.modelo + "\nauto.color = " +
                 this.color + "\nauto.patentecolor " + AutoMovil.getColorPatente() +
                 "\nauto.cilindrada = " + this.cilindrada;
@@ -82,16 +86,14 @@ public class AutoMovil {
     }
     @Override
     public String toString() {
-        return "AutoMovil{" +
-                "fabricante='" + fabricante + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", color='" + color + '\'' +
-                ", cilindrada=" + cilindrada +
-                ", capacidadTanque=" + capacidadTanque +
-                '}';
+        return this.id + ": " + this.fabricante + " " + this.modelo;
     }
 
     // STATICO -----------------------------------------------------------------------------------------
     public static void setColorPatente(String colorPatente) {AutoMovil.colorPatente = colorPatente;}
     public static String getColorPatente() {return colorPatente;}
+    public static void setCapacidadTanqueEstatico(int capacidadTanqueEstatico) {
+        AutoMovil.capacidadTanqueEstatico = capacidadTanqueEstatico;
+    }
+    public static int getCapacidadTanqueEstatico() {return capacidadTanqueEstatico;}
 }
