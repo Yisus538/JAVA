@@ -10,7 +10,6 @@ public class AutoMovil {
     // Metodos
 
     public AutoMovil(){} // Constructor por defecto
-
     public AutoMovil(String fabricante, String modelo, String color, double cilindrada, int capacidadTanque) {
         this.fabricante = fabricante;
         this.modelo = modelo;
@@ -18,17 +17,6 @@ public class AutoMovil {
         this.cilindrada = cilindrada;
         this.capacidadTanque = capacidadTanque;
     }
-
-    public AutoMovil(String fabricante, String color) {
-        this.fabricante = fabricante;
-        this.color = color;
-    }
-
-    public AutoMovil(String fabricante, String modelo, double cilindrada){
-        this(fabricante,modelo);
-        this.cilindrada = cilindrada;
-    }
-
     //------------------------------------------------------------------------------------------------------
     public void setFabricante(String fabricante){this.fabricante = fabricante;}
     public void setModelo(String modelo){this.modelo = modelo;}
@@ -62,4 +50,13 @@ public class AutoMovil {
         return km/(capacidadTanque*(porcentaje/100f));
     }
 
+    // POLIMORFISMO ----------------------------------------------------------------------------------
+    @Override
+    public boolean equals(Object obj) {
+        AutoMovil a = (AutoMovil)obj;
+        return (this.fabricante != null && this.modelo != null &&
+                this.fabricante.equals(a.getFabricante()) &&
+                this.modelo.equals(a.getModelo())
+        );
+    }
 }
