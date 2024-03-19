@@ -7,8 +7,12 @@ public class AutoMovil {
     private double cilindrada;
     private int capacidadTanque = 40;
 
+   private static String colorPatente = "Naranja";
+   private static int capacidadTanqueEstatico = 30;
+
     // Metodos
 
+    // Sobrecarga de Constructores --------------------------------------------------------------------------
     public AutoMovil(){} // Constructor por defecto
     public AutoMovil(String fabricante, String modelo, String color, double cilindrada, int capacidadTanque) {
         this.fabricante = fabricante;
@@ -32,7 +36,10 @@ public class AutoMovil {
 
     //-------------------------------------------------------------------------------------------------------
     public String detalle() {
-        return "\nauto.fabricante = " + this.fabricante + "\nauto.modelo = " + this.modelo + "\nauto.color = " + this.color + "\nauto.cilindrada = " + this.cilindrada;
+        return "\nauto.fabricante = " + this.fabricante +
+                "\nauto.modelo = " + this.modelo + "\nauto.color = " +
+                this.color + "\nauto.patentecolor " + AutoMovil.getColorPatente() +
+                "\nauto.cilindrada = " + this.cilindrada;
     }
     public String acelerar(int rpm){
         return "\nel auto " + this.fabricante + " acelerando a " + rpm + "rpm\n";
@@ -49,14 +56,42 @@ public class AutoMovil {
     public float calcularConsumo(int km,int porcentaje){
         return km/(capacidadTanque*(porcentaje/100f));
     }
+    public static float calcularConsumoEstatico(int km,int porcentaje){
+        return km/(AutoMovil.capacidadTanqueEstatico*(porcentaje/100f));
+    }
 
     // POLIMORFISMO ----------------------------------------------------------------------------------
     @Override
     public boolean equals(Object obj) {
+
+        if(this == obj){
+            return true;
+        }
+
+        if(!(obj instanceof AutoMovil)){
+            return false;
+        }
+
         AutoMovil a = (AutoMovil)obj;
-        return (this.fabricante != null && this.modelo != null &&
-                this.fabricante.equals(a.getFabricante()) &&
-                this.modelo.equals(a.getModelo())
+        return (this.fabricante != null && this.modelo != null
+                && this.fabricante.equals(a.getFabricante())
+                && this.modelo.equals(a.getModelo())
         );
+
+
     }
+    @Override
+    public String toString() {
+        return "AutoMovil{" +
+                "fabricante='" + fabricante + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", color='" + color + '\'' +
+                ", cilindrada=" + cilindrada +
+                ", capacidadTanque=" + capacidadTanque +
+                '}';
+    }
+
+    // STATICO -----------------------------------------------------------------------------------------
+    public static void setColorPatente(String colorPatente) {AutoMovil.colorPatente = colorPatente;}
+    public static String getColorPatente() {return colorPatente;}
 }

@@ -1,8 +1,13 @@
+import java.util.Date;
+
 public class EjemploAuto {
     public static void main(String[] args) {
 
         AutoMovil subaru = new AutoMovil();
         AutoMovil mazda = new AutoMovil();
+        Date fecha = new Date();
+
+        System.out.println(subaru.equals(fecha));
 
         System.out.println(subaru.getFabricante());
         System.out.println(subaru.detalle() + mazda.detalle());
@@ -21,5 +26,6 @@ public class EjemploAuto {
         System.out.println("Son iguales? " + (nissan == nissan2));
         System.out.println("Son iguales con equals? " + nissan.equals(nissan2));
 
+        System.out.println(nissan.toString());
     }
 }
