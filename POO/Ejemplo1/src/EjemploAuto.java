@@ -3,11 +3,9 @@ import java.util.Date;
 public class EjemploAuto {
     public static void main(String[] args) {
 
+        Motor motorSubaru = new Motor(2.0,TipoMotor.NAFTA);
         AutoMovil subaru = new AutoMovil();
         AutoMovil mazda = new AutoMovil();
-        Date fecha = new Date();
-
-        System.out.println(subaru.equals(fecha));
 
         System.out.println(subaru.getFabricante());
         System.out.println(subaru.detalle() + mazda.detalle());
