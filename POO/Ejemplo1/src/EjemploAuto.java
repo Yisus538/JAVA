@@ -3,12 +3,12 @@ import java.util.Date;
 public class EjemploAuto {
     public static void main(String[] args) {
 
-        Motor motorSubaru = new Motor(2.0,TipoMotor.NAFTA);
+        Motor motorSubaru = new Motor(2.0,TipoMotor.BENCINA);
         AutoMovil subaru = new AutoMovil();
         AutoMovil mazda = new AutoMovil();
 
         System.out.println(subaru.getFabricante());
-        System.out.println(subaru.detalle() + mazda.detalle());
+        System.out.println(subaru.verDetalle() + mazda.verDetalle());
 
         System.out.println(subaru.acelerar(3000));
         System.out.println(subaru.frenar());
@@ -16,10 +16,10 @@ public class EjemploAuto {
 
         System.out.println("Kilometros por litro " + mazda.calcularConsumo(300,0.6f));
         System.out.println("Kilometros por litro " + mazda.calcularConsumo(300,60));
-        System.out.println(subaru.detalle());
+        System.out.println(subaru.verDetalle());
 
-        AutoMovil nissan = new AutoMovil("Nissan","Navara",Color.GRIS,3.5,50);
-        AutoMovil nissan2 = new AutoMovil("Nissan","Navara",Color.GRIS,3.5,50);
+        AutoMovil nissan = new AutoMovil("Nissan","Navara",Color.GRIS,new Motor(3.5,TipoMotor.DIESEL),new Estanque(50));
+        AutoMovil nissan2 = new AutoMovil("Nissan","Navara",Color.GRIS,new Motor(3.5,TipoMotor.BENCINA),new Estanque(50));
 
         System.out.println("Son iguales? " + (nissan == nissan2));
         System.out.println("Son iguales con equals? " + nissan.equals(nissan2));

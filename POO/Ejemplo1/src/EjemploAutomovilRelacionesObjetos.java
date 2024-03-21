@@ -3,7 +3,7 @@ public class EjemploAutomovilRelacionesObjetos {
     public static void main(String[] args) {
 
         Persona conductorSubaru = new Persona("Luci", "Martínez");
-        Automovil subaru = new Automovil("Subaru", "Impreza");
+        AutoMovil subaru = new AutoMovil("Subaru", "Impreza");
         subaru.setMotor(new Motor(2.0, TipoMotor.BENCINA));
         subaru.setEstanque(new Estanque());
         subaru.setColor(Color.BLANCO);
@@ -16,7 +16,7 @@ public class EjemploAutomovilRelacionesObjetos {
         }
 
         Persona pato = new Persona("Pato", "Rodríguez");
-        Automovil mazda = new Automovil("Mazda", "BT-50", Color.ROJO, new Motor(3.0, TipoMotor.DIESEL));
+        AutoMovil mazda = new AutoMovil("Mazda", "BT-50", Color.ROJO, new Motor(3.0, TipoMotor.DIESEL));
         mazda.setTipo(TipoAutomovil.PICKUP);
         mazda.setEstanque(new Estanque());
         mazda.setConductor(pato);
@@ -28,7 +28,7 @@ public class EjemploAutomovilRelacionesObjetos {
         }
 
         Persona bea = new Persona("Bea", "González");
-        Automovil nissan = new Automovil("Nissan", "Navara", Color.GRIS,
+        AutoMovil nissan = new AutoMovil("Nissan", "Navara", Color.GRIS,
                 new Motor(4.0, TipoMotor.DIESEL), new Estanque(50));
         nissan.setConductor(bea);
         nissan.setTipo(TipoAutomovil.PICKUP);
@@ -46,13 +46,13 @@ public class EjemploAutomovilRelacionesObjetos {
                 new Rueda("Pirelli", 20, 11.5)};
 
         Persona lalo = new Persona("Lalo", "Mena");
-        Automovil nissan2 = new Automovil("Nissan", "Navara", Color.GRIS,
+        AutoMovil nissan2 = new AutoMovil("Nissan", "Navara", Color.GRIS,
                 new Motor(3.5, TipoMotor.BENCINA), new Estanque(50), lalo, ruedasNissan2);
         nissan2.setColor(Color.AMARILLO);
         nissan2.setTipo(TipoAutomovil.PICKUP);
-        Automovil.setColorPatente(Color.AZUL);
+        AutoMovil.setColorPatente(Color.AZUL);
 
-        Automovil auto = new Automovil();
+        AutoMovil auto = new AutoMovil();
 
         System.out.println(subaru.verDetalle());
         System.out.println(mazda.verDetalle());

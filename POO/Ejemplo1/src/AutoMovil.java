@@ -1,4 +1,4 @@
-public class Automovil implements Comparable<Automovil>{
+public class AutoMovil{
 
     private int id;
     private String fabricante;
@@ -25,33 +25,34 @@ public class Automovil implements Comparable<Automovil>{
     public static final String COLOR_BLANCO = "Blanco";
     public static final String COLOR_GRIS = "Gris Oscuro";
 
-    public Automovil() {
+
+    public AutoMovil() {
         this.id = ++ultimoId;
         this.ruedas = new Rueda[5];
     }
 
-    public Automovil(String fabricante, String modelo) {
+    public  AutoMovil(String fabricante, String modelo) {
         this();
         this.fabricante = fabricante;
         this.modelo = modelo;
     }
 
-    public Automovil(String fabricante, String modelo, Color color){
+    public  AutoMovil(String fabricante, String modelo, Color color) {
         this(fabricante, modelo);
         this.color = color;
     }
 
-    public Automovil(String fabricante, String modelo, Color color, Motor motor) {
+    public AutoMovil(String fabricante, String modelo, Color color, Motor motor) {
         this(fabricante, modelo, color);
         this.motor = motor;
     }
 
-    public Automovil(String fabricante, String modelo, Color color, Motor motor, Estanque estanque) {
+    public AutoMovil(String fabricante, String modelo, Color color, Motor motor, Estanque estanque) {
         this(fabricante, modelo, color, motor);
         this.estanque = estanque;
     }
 
-    public Automovil(String fabricante, String modelo, Color color, Motor motor, Estanque estanque, Persona conductor, Rueda[] ruedas) {
+    public AutoMovil(String fabricante, String modelo, Color color, Motor motor, Estanque estanque, Persona conductor, Rueda[] ruedas) {
         this(fabricante, modelo, color, motor, estanque);
         this.conductor = conductor;
         this.ruedas = ruedas;
@@ -89,12 +90,12 @@ public class Automovil implements Comparable<Automovil>{
         this.color = color;
     }
 
-    public static Color getColorPatente(){
+    public static Color getColorPatente() {
         return colorPatente;
     }
 
-    public static void setColorPatente(Color colorPatente){
-        Automovil.colorPatente = colorPatente;
+    public static void setColorPatente(Color colorPatente) {
+        AutoMovil.colorPatente = colorPatente;
     }
 
     public static int getCapacidadEstanqueEstatico() {
@@ -102,7 +103,7 @@ public class Automovil implements Comparable<Automovil>{
     }
 
     public static void setCapacidadEstanqueEstatico(int capacidadEstanqueEstatico) {
-        Automovil.capacidadEstanqueEstatico = capacidadEstanqueEstatico;
+        AutoMovil.capacidadEstanqueEstatico = capacidadEstanqueEstatico;
     }
 
     public TipoAutomovil getTipo() {
@@ -122,7 +123,7 @@ public class Automovil implements Comparable<Automovil>{
     }
 
     public Estanque getEstanque() {
-        if(estanque == null){
+        if (estanque == null) {
             this.estanque = new Estanque();
         }
         return estanque;
@@ -148,34 +149,34 @@ public class Automovil implements Comparable<Automovil>{
         this.ruedas = ruedas;
     }
 
-    public Automovil addRueda(Rueda rueda){
-        if(indiceRuedas < this.ruedas.length) {
+    public AutoMovil addRueda(Rueda rueda) {
+        if (indiceRuedas < this.ruedas.length) {
             this.ruedas[indiceRuedas++] = rueda;
         }
         return this;
     }
 
     public String verDetalle() {
-        String detalle =  "auto.id = " + this.id +
+        String detalle = "auto.id = " + this.id +
                 "\nauto.fabricante = " + this.getFabricante() +
                 "\nauto.modelo = " + this.getModelo();
 
-        if(this.getTipo() != null) {
+        if (this.getTipo() != null) {
             detalle += "\nauto.tipo = " + this.getTipo().getDescripcion();
         }
 
         detalle += "\nauto.color = " + this.color +
                 "\nauto.patenteColor = " + colorPatente;
 
-        if(this.motor != null) {
+        if (this.motor != null) {
             detalle += "\nauto.cilindrada = " + this.motor.getCilindrada();
         }
 
-        if(conductor != null) {
+        if (this.conductor != null) {
             detalle += "\nConductor subaru:" + this.getConductor();
         }
 
-        if(getRuedas() != null) {
+        if (getRuedas() != null) {
             detalle += "\nRuedas del automóvil:";
             for (Rueda r : this.getRuedas()) {
                 detalle += "\n" + r.getFabricante() + ", aro: " + r.getAro() + ", ancho: " + r.getAncho();
@@ -208,19 +209,19 @@ public class Automovil implements Comparable<Automovil>{
     }
 
     public static float calcularConsumoEstatico(int km, int porcentajeBencina) {
-        return km / (Automovil.capacidadEstanqueEstatico * (porcentajeBencina / 100f));
+        return km / (AutoMovil.capacidadEstanqueEstatico * (porcentajeBencina / 100f));
     }
 
     @Override
     public boolean equals(Object obj) {
 
-        if(this == obj){
+        if (this == obj) {
             return true;
         }
-        if(!(obj instanceof Automovil)){
+        if (!(obj instanceof AutoMovil)) {
             return false;
         }
-        Automovil a = (Automovil) obj;
+        AutoMovil a = (AutoMovil) obj;
         return (this.fabricante != null && this.modelo != null
                 && this.fabricante.equals(a.getFabricante())
                 && this.modelo.equals(a.getModelo()));
@@ -231,8 +232,4 @@ public class Automovil implements Comparable<Automovil>{
         return this.id + " : " + fabricante + " " + modelo;
     }
 
-    @Override
-    public int compareTo(Automovil a) {
-        return this.fabricante.compareTo(a.fabricante);
-    }
 }
