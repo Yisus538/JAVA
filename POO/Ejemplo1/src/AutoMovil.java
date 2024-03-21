@@ -10,12 +10,12 @@ public class AutoMovil {
 
     private TipoAutomovil tipo;
 
-   private static Color colorPatente = Color.NARANJO;
-   private static int capacidadTanqueEstatico = 30;
-   private static int ultimoId;
+    private static Color colorPatente = Color.NARANJO;
+    private static int capacidadTanqueEstatico = 30;
+    private static int ultimoId;
 
-   public static final Integer VELOCIDAD_MAXIMA_CARRETERA = 120;
-   public static final int VELOCIDAD_MAXIMA_CIUDAD = 60;
+    public static final Integer VELOCIDAD_MAXIMA_CARRETERA = 120;
+    public static final int VELOCIDAD_MAXIMA_CIUDAD = 60;
 
 
     // Metodos
