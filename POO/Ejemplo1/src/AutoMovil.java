@@ -4,19 +4,25 @@ public class AutoMovil {
     private int id;
     private String fabricante;
     private String modelo;
-    private String color;
+    private Color color = Color.GRIS;
     private double cilindrada;
     private int capacidadTanque = 40;
 
-   private static String colorPatente = "Naranja";
+    private TipoAutomovil tipo;
+
+   private static Color colorPatente = Color.NARANJO;
    private static int capacidadTanqueEstatico = 30;
    private static int ultimoId;
+
+   public static final Integer VELOCIDAD_MAXIMA_CARRETERA = 120;
+   public static final int VELOCIDAD_MAXIMA_CIUDAD = 60;
+
 
     // Metodos
 
     // Sobrecarga de Constructores --------------------------------------------------------------------------
     public AutoMovil(){this.id = ++AutoMovil.ultimoId;} // Constructor por defecto
-    public AutoMovil(String fabricante, String modelo, String color, double cilindrada, int capacidadTanque) {
+    public AutoMovil(String fabricante, String modelo, Color color, double cilindrada, int capacidadTanque) {
         this();
         this.fabricante = fabricante;
         this.modelo = modelo;
@@ -27,23 +33,31 @@ public class AutoMovil {
     //------------------------------------------------------------------------------------------------------
     public void setFabricante(String fabricante){this.fabricante = fabricante;}
     public void setModelo(String modelo){this.modelo = modelo;}
-    public void setColor(String color){this.color = color;}
+    public void setColor(Color color){this.color = color;}
     public void setCilindrada(double cilindrada){this.cilindrada = cilindrada;}
     public void setCapacidadTanque(int capacidadTanque){this.capacidadTanque = capacidadTanque;}
+    public void setTipo(TipoAutomovil tipo) {
+        this.tipo = tipo;
+    }
+    public TipoAutomovil getTipo() {
+        return tipo;
+    }
     //------------------------------------------------------------------------------------------------------
     public String getFabricante(){return this.fabricante;}
     public String getModelo(){return this.modelo;}
-    public String getColor(){return this.color;}
+    public Color getColor(){return this.color;}
     public double getCilindrada(){return  this.cilindrada;}
     public int getCapacidadTanque(){return this.capacidadTanque;}
 
     //-------------------------------------------------------------------------------------------------------
     public String detalle() {
         return "\nauto.id = " + this.id +
-                "\nauto.fabricante = " + this.fabricante +
-                "\nauto.modelo = " + this.modelo + "\nauto.color = " +
-                this.color + "\nauto.patentecolor " + AutoMovil.getColorPatente() +
-                "\nauto.cilindrada = " + this.cilindrada;
+                "\nauto.fabricante = " + this.getFabricante() +
+                "\nauto.modelo = " + this.getModelo() +
+                "\nauto.tipo" + this.getTipo().getDescripcion() +
+                "\nauto.color = " + this.color +
+                "\nauto.patentecolor " + AutoMovil.getColorPatente() +
+                "\nauto.cilindrada = " + this.getCilindrada();
     }
     public String acelerar(int rpm){
         return "\nel auto " + this.fabricante + " acelerando a " + rpm + "rpm\n";
@@ -89,9 +103,9 @@ public class AutoMovil {
         return this.id + ": " + this.fabricante + " " + this.modelo;
     }
 
-    // STATICO -----------------------------------------------------------------------------------------
-    public static void setColorPatente(String colorPatente) {AutoMovil.colorPatente = colorPatente;}
-    public static String getColorPatente() {return colorPatente;}
+    // ESTATICO -----------------------------------------------------------------------------------------
+    public static void setColorPatente(Color colorPatente) {AutoMovil.colorPatente = colorPatente;}
+    public static Color getColorPatente() {return colorPatente;}
     public static void setCapacidadTanqueEstatico(int capacidadTanqueEstatico) {
         AutoMovil.capacidadTanqueEstatico = capacidadTanqueEstatico;
     }

@@ -20,8 +20,8 @@ public class EjemploAuto {
         System.out.println("Kilometros por litro " + mazda.calcularConsumo(300,60));
         System.out.println(subaru.detalle());
 
-        AutoMovil nissan = new AutoMovil("Nissan","Navara","Gris Oscuro",3.5,50);
-        AutoMovil nissan2 = new AutoMovil("Nissan","Navara","Gris oscuro",3.5,50);
+        AutoMovil nissan = new AutoMovil("Nissan","Navara",Color.GRIS,3.5,50);
+        AutoMovil nissan2 = new AutoMovil("Nissan","Navara",Color.GRIS,3.5,50);
 
         System.out.println("Son iguales? " + (nissan == nissan2));
         System.out.println("Son iguales con equals? " + nissan.equals(nissan2));
