@@ -1,5 +1,7 @@
 package org.jesus.appfactura.modelo;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 public class Factura {
@@ -13,7 +15,7 @@ public class Factura {
 
 
     private  static int ultimoFolio;
-    public static final int MAX_ITEMS = 10;
+    public static final int MAX_ITEMS = 12;
 
     public Factura(Cliente cliente, String descripcion) {
         this.cliente = cliente;
@@ -59,5 +61,47 @@ public class Factura {
         if(indiceItems < MAX_ITEMS){
             this.items[this.indiceItems++] = items;
         }
+    }
+
+    public float calcularTotal(){
+        float total = 0.0f;
+
+        for(ItemFactura item : this.items){
+            if(item == null) {
+                continue;
+            }
+            total += item.calcularImporte();
+        }
+        return total;
+    }
+    public String veDetalle(){
+        StringBuilder sb = new StringBuilder("Factura N: ");
+        sb.append(this.folio)
+                .append("\nCliente: ").append(this.cliente.getNombre())
+                .append("\nNIF: ").append(this.cliente.getNif())
+                .append("\nDescripcion: ").append(this.descripcion)
+                .append("\n")
+                .append("\n#\tNombre\t$\tCant.\tTotal\n");
+        SimpleDateFormat df = new SimpleDateFormat("dd 'de' MMMM, yyyy");
+        sb.append("Fecha Emision: ")
+                .append(df.format(this.fecha))
+                .append("\n");
+        for(ItemFactura item : this.items){
+            if(item == null) {
+                continue;
+            }
+            sb.append(item.getProducto().getCodigo())
+                    .append("\t")
+                    .append(item.getProducto().getNombre())
+                    .append("\t")
+                    .append(item.getCantidad())
+                    .append("\t")
+                    .append(item.calcularImporte())
+                    .append("\n");
+        }
+        sb.append("\nGran Total: ")
+                .append(this.calcularTotal());
+
+        return sb.toString();
     }
 }
