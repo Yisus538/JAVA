@@ -1,7 +1,6 @@
 package org.jesus.appfactura.modelo;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 public class Factura {
@@ -74,30 +73,24 @@ public class Factura {
         }
         return total;
     }
-    public String veDetalle(){
+    public String verDetalle(){
         StringBuilder sb = new StringBuilder("Factura N: ");
         sb.append(this.folio)
                 .append("\nCliente: ").append(this.cliente.getNombre())
                 .append("\nNIF: ").append(this.cliente.getNif())
                 .append("\nDescripcion: ").append(this.descripcion)
-                .append("\n")
-                .append("\n#\tNombre\t$\tCant.\tTotal\n");
+                .append("\n");
+
         SimpleDateFormat df = new SimpleDateFormat("dd 'de' MMMM, yyyy");
         sb.append("Fecha Emision: ")
                 .append(df.format(this.fecha))
-                .append("\n");
+                .append("\n")
+                .append("\n#\tNombre\t$\tCant.\tTotal\n");
         for(ItemFactura item : this.items){
             if(item == null) {
                 continue;
             }
-            sb.append(item.getProducto().getCodigo())
-                    .append("\t")
-                    .append(item.getProducto().getNombre())
-                    .append("\t")
-                    .append(item.getCantidad())
-                    .append("\t")
-                    .append(item.calcularImporte())
-                    .append("\n");
+            sb.append(item);
         }
         sb.append("\nGran Total: ")
                 .append(this.calcularTotal());
