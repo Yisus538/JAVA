@@ -10,14 +10,12 @@ public class EjemploFactura {
 
         Scanner in = new Scanner(System.in);
         System.out.println("Ingrese la descripcion de la factura: ");
-        String descripcion = in.nextLine();
-
-        Factura factura = new Factura(cliente,descripcion);
+        Factura factura = new Factura(cliente,in.nextLine());
         Producto producto;
 
         System.out.println("\n");
 
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 2; i++){
             producto = new Producto();
 
             System.out.print("Ingrese el producto N" + producto.getCodigo() + ": ");

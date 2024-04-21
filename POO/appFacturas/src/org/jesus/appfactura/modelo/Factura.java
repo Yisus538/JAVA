@@ -61,14 +61,12 @@ public class Factura {
             this.items[this.indiceItems++] = items;
         }
     }
-
     public float calcularTotal(){
         float total = 0.0f;
 
-        for(ItemFactura item : this.items){
-            if(item == null) {
-                continue;
-            }
+        for(int i = 0; i < indiceItems; i++){
+            //! Asegura de que se guarden los datos y no valores nulos: if(item == null) continue;
+            ItemFactura item = items[i];
             total += item.calcularImporte();
         }
         return total;
@@ -86,10 +84,9 @@ public class Factura {
                 .append(df.format(this.fecha))
                 .append("\n")
                 .append("\n#\tNombre\t$\tCant.\tTotal\n");
-        for(ItemFactura item : this.items){
-            if(item == null) {
-                continue;
-            }
+        for(int i = 0; i < indiceItems; i++){
+            //if(item == null) continue;
+            ItemFactura item = items[i];
             sb.append(item);
         }
         sb.append("\nGran Total: ")
