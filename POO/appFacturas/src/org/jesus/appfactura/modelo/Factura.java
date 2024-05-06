@@ -16,6 +16,7 @@ public class Factura {
     private  static int ultimoFolio;
     public static final int MAX_ITEMS = 12;
 
+    public Factura(){}
     public Factura(Cliente cliente, String descripcion) {
         this.cliente = cliente;
         this.descripcion = descripcion;
