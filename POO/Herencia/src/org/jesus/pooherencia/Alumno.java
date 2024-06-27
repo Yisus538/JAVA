@@ -7,7 +7,26 @@ public class Alumno extends Persona{
     private double notaCastellano;
     private double notaHistoria;
 
-
+    public Alumno(){
+        System.out.println("Alumno: inicializando constructor...");
+    }
+    public Alumno(String nombre,String apellido){
+        super(nombre,apellido);
+    }
+    public Alumno(String nombre,String apellido,int edad){
+        super(nombre,apellido,edad);
+    }
+    public Alumno(String nombre,String apellido,int edad,String institucion){
+        super(nombre,apellido,edad);
+        this.institucion=institucion;
+    }
+    public Alumno(String nombre,String apellido,int edad,String institucion,
+                  double notaMatematica,double notaCastellano,double notaHistoria){
+        this(nombre,apellido,edad,institucion);
+        this.notaMatematica=notaMatematica;
+        this.notaCastellano=notaCastellano;
+        this.notaHistoria=notaHistoria;
+    }
 
     public String getInstitucion() {
         return institucion;
@@ -35,5 +54,14 @@ public class Alumno extends Persona{
     }
     public void setNotaHistoria(double notaHistoria) {
         this.notaHistoria = notaHistoria;
+    }
+
+    @Override
+    public String saludar(){
+        return super.saludar() + " soy un alumno y mi nombre es: " + this.getNombre();
+    }
+
+    public double calcularPromedio(){
+        return (this.notaHistoria+this.notaCastellano+this.notaCastellano)/3;
     }
 }
