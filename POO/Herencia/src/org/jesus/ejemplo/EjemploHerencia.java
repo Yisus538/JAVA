@@ -48,7 +48,6 @@ public class EjemploHerencia {
                 + " " + profesor.getApellido());
 
         // Bucle creado para comprobar las herencias Padre hijo
-
         Class claseAlumnoInt = alumnoInt.getClass();
 
         while(claseAlumnoInt.getSuperclass() != null){
