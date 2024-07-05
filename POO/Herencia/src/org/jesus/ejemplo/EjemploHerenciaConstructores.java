@@ -12,7 +12,6 @@ public class EjemploHerenciaConstructores {
         alumno.setNotaMatematica(4.9);
         alumno.setEmail("jesus@jesus.com");
 
-
         System.out.println("========== Creando Instancia de la clase  Internacional ===========");
         AlumnoInternacional alumnoInt = new AlumnoInternacional("Peter","Gosling","Australia");
 

@@ -1,6 +1,6 @@
 package org.jesus.pooherencia;
 
-public class AlumnoInternacional extends Alumno{
+public final class AlumnoInternacional extends Alumno{
 
     private String pais;
     private double notaIdiomas;
@@ -42,6 +42,14 @@ public class AlumnoInternacional extends Alumno{
 
     @Override
     public double calcularPromedio(){
+        System.out.println("CalcularPromedio: " + AlumnoInternacional.class.getCanonicalName());
         return ((super.calcularPromedio()*3) + notaIdiomas)/4;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\npais='" + pais + '\'' +
+                ", notaIdiomas=" + notaIdiomas;
     }
 }
